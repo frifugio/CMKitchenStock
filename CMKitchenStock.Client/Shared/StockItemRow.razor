@@ -7,6 +7,9 @@
 
     <td>
         <EditForm EditContext="editContext">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
             <div class="input-group mb-3">
                 <label>Stock: </label>
                 <div class="input-group-prepend mx-2">
@@ -42,11 +45,13 @@
     private void IncreaseAndValidate()
     {
         Stock.Quantity++;
+        editContext?.Validate();
     }
 
     private void DecreaseAndValidate()
     {
         Stock.Quantity--;
+        editContext?.Validate();
     }
 
 }

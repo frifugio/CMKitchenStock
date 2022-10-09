@@ -9,7 +9,10 @@
 <div class="container">
     <h3>Add a new item for the stock</h3>
 
-    <EditForm Model="@newStock" OnSubmit="OnSubmit">
+    <EditForm Model="@newStock" OnValidSubmit="OnSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
         <div class="form-group">
             <label for="Name">Name</label>
             <InputText @bind-Value=newStock.Name class="form-control" id="Name" />
