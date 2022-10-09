@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.Text;
+using CMKitchenStock.Shared.CustomValidations;
 
 namespace CMKitchenStock.Shared
 {
@@ -9,11 +11,17 @@ namespace CMKitchenStock.Shared
     {
         [JsonProperty("id")]
         public Guid Id { get; set; }
+
         [JsonProperty("name")]
-        public string Name { get; set; }
+        [Required]
+        public string? Name { get; set; }
+
         [JsonProperty("quantity")]
+        [Range(0, 100)]
         public int Quantity { get; set; }
+
         [JsonProperty("nextRefillDate")]
+        [FutureDate]
         public DateTime? NextRefillDate { get; set; }
     }
 }
